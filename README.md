@@ -127,6 +127,7 @@ The riddle wants you to infer: chess needs 2 players → Amanda is the opponent.
 Pick your epistemology: if you're at a party, say "chess with Alice." If you're in a logic class, say "insufficient premises."
 ```
 
+
 ```
 > output(sound solution)
 ? resolve fork → sound solution
@@ -144,7 +145,7 @@ $ tells us ¬thing about Amanda beyond presence in room.
 sound reasoning: we simply don't know. ~9
 ```
 
-for saving more tokens:
+saving more tokens:
 ```
 output(sound solution, format=*SHORT*)
 = undetermined ~7
