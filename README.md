@@ -144,6 +144,14 @@ $ tells us ¬thing about Amanda beyond presence in room.
 sound reasoning: we simply don't know. ~9
 ```
 
+for saving more tokens:
+```
+output(sound solution, format=*SHORT*)
+= undetermined ~7
+
+chess needing 2 players is %A ¬$. Amanda's activity is never stated. The "obvious" answer (chess with Alice) is plausible but assumes facts not in evidence.
+```
+
 ## Claude Code integration
 
 ```bash
