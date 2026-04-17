@@ -147,10 +147,18 @@ sound reasoning: we simply don't know. ~9
 
 saving more tokens:
 ```
-output(sound solution, format=*SHORT*)
+> output(sound solution, format=*SHORT*)
 = undetermined ~7
 
 chess needing 2 players is %A ¬$. Amanda's activity is never stated. The "obvious" answer (chess with Alice) is plausible but assumes facts not in evidence.
+```
+
+and more tokens:
+```
+> output(sound solution, format=shortest)
+= undetermined ~7
+
+$ ¬states Amanda's activity. "playing chess" ¬entails 2-player. popular answer assumes what it should prove.
 ```
 
 ## Claude Code integration
