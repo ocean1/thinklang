@@ -89,6 +89,8 @@ $ enumerate ONLY what is explicitly stated
   ∀ alternatives with comparable ~N: MUST fork
   format: = answer_1 ~N | answer_2 ~N | ...
   ¬pick winner unless one branch dominates (large ~N gap)
+  scoring: ~ branch anchored in $ alone > = branch dependent on %A
+    << ~ inherits confidence from $ (strong); = inherits min(~N) of its %A chain (weak)
 
 ## On activation
 

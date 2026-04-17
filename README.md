@@ -72,40 +72,54 @@ Amanda is playing chess. Chess requires two players — Alice is playing chess, 
 
 ### Opus 4.6, high effort, no thinking, TL
 ```
-solve(There are three sisters in a room. Anna is reading a book. Alice is playing a game of chess. What is the third sister, Amanda, doing?)
+> solve(There are three sisters in a room. Anna is reading a book. Alice is playing a game of chess. What is the third sister, Amanda, doing?)
 ? third sister Amanda's activity
 
 $ Anna reading book, Alice playing chess, |$| = 2
 
-chess requires 2 players → Alice's opponent = ?
-%A1: Amanda is Alice's chess opponent
-candidate: Amanda playing chess ~7
+chess requires 2 players ~8
+Anna reading (solo) → Anna ¬playing chess ~9
+Alice playing chess → needs opponent ~8
+Amanda is in room → available as opponent ~7
+*Amanda playing chess with Alice ~6
 
 ! attack candidate
-¬%A1: Alice could play chess with ¬Amanda
-- chess opponent could be non-sister (friend, parent, stranger, online)
-- chess opponent could be computer/app
-- Alice could play alone (studying positions, solving puzzles)
-alternatives compatible with $:
-- Amanda playing chess ~7
-- Amanda doing anything else (watching TV, cooking, sleeping, ...) ~3 each
-|%A| = 1, |$| = 2 → underdetermined but not premise-insufficient
+%A1: chess requires physical opponent (could be computer/book/solo puzzle) ~5
+%A2: no other people in room ($ says "three sisters in a room" — ¬says "only three") ~4
+%A3: Amanda ¬doing something else entirely (reading, sleeping, etc.) ~7
 
-! epistemic gate
-|%A| < |$| ✓
-but: multiple alternatives survive with comparable ~N
-the "chess needs 2 → must be Amanda" chain rests entirely on %A1
-¬$ states room has only 3 people
-¬$ states no other players available
-cultural expectation ("this is a riddle, chess=2 is the trick") ¬elevates %A to $
+|%A| = 3, |$| = 2
 
-~ underdetermined — $ insufficient to uniquely determine Amanda's activity
+scenarios where ¬%A1: Alice plays chess alone/vs computer → Amanda could do anything
+scenarios where ¬%A2: fourth person present → Amanda unconstrained
+scenarios where ¬%A3: Amanda occupied otherwise → Alice plays someone else or alone
 
-= fork:
+multiple alternatives compatible with $:
 
-Amanda playing chess (with Alice) ~7 — strongest single candidate << chess typically needs 2 & she's available
-Amanda doing something unspecified ~5 — open set of alternatives collectively plausible
-~ missing: who Alice's chess opponent is, any constraint on Amanda's activity
+Amanda plays chess with Alice
+Amanda does something unspecified ($ silent on her activity)
+Alice plays chess solo/digitally, Amanda unconstrained
+! gate check
+|%A| (3) ≥ |$| (2) → gate blocks single =
+! found underdetermined: alternatives survive with comparable ~N
+
+~ premises insufficient to determine Amanda's activity
+
+surviving branches:
+
+playing chess with Alice ~6 (most common intended answer, but depends on %A1∧%A2∧%A3)
+unknown/unspecified ~5 (strictly faithful to $)
+any activity ~4 (if ¬%A2)
+<< $ never states Amanda's activity. popular answer "chess" requires 3 unstated assumptions. ¬collapse.
+
+> final solution?
+= ¬determinable from $ ~8
+
+$ states what Anna & Alice do. $ silent on Amanda. >> no valid single answer without assumptions.
+
+popular answer "chess with Alice" requires %A that chess needs co-located human opponent — plausible but ¬stated, ¬forced.
+
+~ ask Amanda (or the puzzle-giver)
 ```
 
 ### Opus 4.6, high effort, thinking, TL
