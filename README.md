@@ -161,6 +161,41 @@ and more tokens:
 $ ¬states Amanda's activity. "playing chess" ¬entails 2-player. popular answer assumes what it should prove.
 ```
 
+or just a one-shot prompt:
+```
+solve(There are three sisters in a room. Anna is reading a book. Alice is playing a game of chess. What is the third sister, Amanda, doing?, enforce=soundness, format=shortest)
+Phase 0: Premises
+$ three sisters in room: Anna, Alice, Amanda
+$ Anna → reading book
+$ Alice → playing chess
+$ |$| = 3
+
+Phase 1: Reasoning
+chess requires 2 players ~8
+Anna reading → Anna ¬playing chess ~9
+Alice playing chess → needs opponent ~8
+remaining person in room: Amanda ~9
+*Amanda = Alice's chess opponent ~7
+<< only unoccupied person available
+
+Phase 2: Challenge
+! %A: chess opponent must be in-room sister
+|> opponent could be ¬named, ¬sister (visitor, online, AI) ~5
+|> "in a room" ¬=> only 3 people present ~6
+! %A: "playing chess" => physical 2-player game
+|> could be solo puzzle, computer chess, studying positions ~4
+! |%A| = 2, both load-bearing
+
+Phase 3: Gate
+|%A| (2) ≥ |$| (3)? No (2 < 3). Pass.
+But alternatives survive >! with comparable ~N → fork required.
+
+Phase 4
+= Amanda playing chess (with Alice) ~7 | Amanda doing something unspecified ~6
+
+~ problem is underdetermined — $ never states chess requires in-room partner, nor that only 3 people present. Most common intended answer: playing chess with Alice.
+```
+
 ## Claude Code integration
 
 ```bash
