@@ -38,8 +38,14 @@ Responses use ordered blocks:
 
 Every claim ends with `~N` (confidence — low = guess, high = certain, any consistent scale).
 
-## Example
+## Prompt Examples
 
+simple, pseudocode-like:
+```
+analyze(codebase component) propose(solutions)
+```
+
+more structured, following TL format:
 ```
 ? optimize database query
 # PostgreSQL 15, 50M rows, full table scan on users
