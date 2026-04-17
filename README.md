@@ -111,7 +111,10 @@ popular answer (chess with Alice) requires %A1 ∧ %A2 — plausible but ¬entai
 fork:
 = playing chess with Alice ~6 (requires both %A)
 | = undetermined ~7 (strictly from $)
+```
 
+*The semantics of what you prompt are extremely important:*
+```
 > solution?
 
 The puzzle is a classic lateral-thinking riddle designed to have one "intended" answer, but TL reveals the epistemic gap:
@@ -122,6 +125,23 @@ The puzzle is a classic lateral-thinking riddle designed to have one "intended" 
 The riddle wants you to infer: chess needs 2 players → Amanda is the opponent. Most people accept this. But $ never explicitly states it, and "playing chess" alone doesn't entail a human opponent present in the room.
 
 Pick your epistemology: if you're at a party, say "chess with Alice." If you're in a logic class, say "insufficient premises."
+```
+
+```
+> output(sound solution)
+? resolve fork → sound solution
+
+soundness = conclusion entailed by $ alone, ¬%A
+
+reviewing fork:
+"playing chess with Alice" requires %A1 ∧ %A2 — ¬sound
+"undetermined" requires only $ — sound
+
+= Amanda's activity is undetermined from stated premises ~9
+
+$ tells us ¬thing about Amanda beyond presence in room.
+"chess needs 2 players ∴ Amanda" is common intuition but injects %A.
+sound reasoning: we simply don't know. ~9
 ```
 
 ## Claude Code integration
