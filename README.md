@@ -70,6 +70,42 @@ solve(There are three sisters in a room. Anna is reading a book. Alice is playin
 Amanda is playing chess. Chess requires two players — Alice is playing chess, so Amanda must be her opponent.
 ```
 
+### Opus 4.6, low effort, no thinking, TL
+```
+> solve(There are three sisters in a room. Anna is reading a book. Alice is playing a game of chess. What is the third sister, Amanda, doing?)
+? third sister activity
+
+$ Anna reading book
+$ Alice playing chess
+$ three sisters in room
+$ Amanda = third sister
+|$| = 4
+
+chess requires 2 players ~8
+Anna reading → Anna ¬playing chess ~9
+=> Amanda playing chess with Alice %A(no one else available) ~6
+%A: ¬other people in room (¬stated)
+|%A| = 1
+
+! attack candidate
+$ says "three sisters in a room" — ¬says "only three sisters"
+¬$ excludes: friends, parents, fourth person, online chess, AI chess
+scenario where ¬%A: Alice plays chess vs. non-sister opponent → Amanda could do anything
+|alternatives| > 1: reading, sleeping, watching, cooking, also playing chess...
+candidate is underdetermined
+
+gate
+|%A| (1) < |$| (4) ✓
+
+! found underdetermined: alternatives compatible with $ exist ✓
+→ ~ (¬collapse to single =)
+
+~ Amanda's activity: ¬determined from $
+popular answer "playing chess with Alice" requires %A(no other opponents exist) — ¬stated
+$ compatible with: Amanda doing virtually anything
+~2
+```
+
 ### Opus 4.6, high effort, no thinking, TL
 ```
 > solve(There are three sisters in a room. Anna is reading a book. Alice is playing a game of chess. What is the third sister, Amanda, doing?)
