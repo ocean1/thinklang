@@ -10,8 +10,11 @@ Preserves reasoning fidelity, and _possibly_ improves downstream tasks.
 
 ## Quick start
 
-Copy `thinklang.md` into your LLM system prompt, user message, or Claude Code skill directory.
-Prompt with pseudocode and math formalisms to save further tokens.
+Two variants:
+- **`thinklang-lite.md`** — compact notation + epistemic rules. Drop-in, minimal.
+- **`thinklang.md`** — adds structured reasoning phases (`$`, `>!`, epistemic gate, branching).
+
+Copy either into your LLM system prompt, user message, or Claude Code skill directory.
 
 ## Format
 
@@ -23,14 +26,13 @@ Responses use ordered blocks:
 | `#` | context              |
 | `$` | premises (stated only)|
 | `>` | reasoning            |
-| `>!`| challenge (before =) |
 | `=` | conclusion           |
 | `@` | action               |
 | `~` | gaps / missing info  |
 
 ### Operators
 
-`→` then · `|` or · `&` and · `¬` not · `=>` if-then · `>>` therefore · `<<` because · `|>` alt-branch
+`→` then · `|` or · `&` and · `¬` not · `=>` if-then · `>>` therefore · `<<` because
 
 ### Confidence
 
@@ -65,32 +67,55 @@ Amanda is playing chess. Chess requires two players — Alice is playing chess, 
 ### Opus 4.6, high effort, thinking, TL
 
 ```
+> /tl
+TL activated. await(task)
+
+> solve(There are three sisters in a room. Anna is reading a book. Alice is playing a game of chess. What is the third sister, Amanda, doing?)
+
 ? third sister Amanda's activity
 
-$ room, 3 sisters
-$ Anna → reading book
-$ Alice → playing chess
-$ chess requires 2 players
+$ Anna reading book, Alice playing chess, |$| = 2
 
-Alice playing chess → needs opponent
-candidates in room: Anna, Amanda
-Anna → reading << stated
-=> Amanda = chess opponent ~9
+chess requires 2 players ~8
+Anna reading (solo) → ¬playing chess ~9
+Alice playing chess → needs opponent ~8
+Amanda is in room → available as opponent ~7
+*Amanda playing chess with Alice ~6
 
-! attack candidate
-%A: chess opponent ∈ room occupants
-|> Alice playing chess online/against computer → Amanda unconstrained
-|> "playing a game of chess" could = solo study (puzzles, book)
-but: standard reading of "playing a game of chess" → active game w/ opponent ~7
-%A count: |%A| = 1 (opponent must be co-located human)
+! ¬gentle attack:
+%A1: chess opponent must be someone in room ~5
+|> opponent could be outside room (visitor, unnamed person) ~4
+|> opponent could be computer/phone ~6
+|> Alice could be studying chess positions solo (puzzle book, analysis) ~4
+%A2: "playing a game of chess" implies active 2-player game ~5
+|> "playing chess" can mean solo puzzles, chess app, self-play ~5
 
-! epistemic gate
-|$| = 4, |%A| = 1 → proceed (|%A| < |$|)
-but alternative (online/solo chess) is plausible ~4
+|%A| = 2, |$| = 2 → |%A| ≥ |$| → gate triggered
 
-= Amanda playing chess (w/ Alice) ~7 | Amanda's activity underdetermined ~4
+! alternatives surviving challenge:
+a) Amanda playing chess with Alice ~6
+b) Amanda doing something unspecified ($ says nothing about her) ~7
+c) Alice playing chess on device → Amanda doing anything ~5
 
-~ "playing chess" ambiguous re: opponent identity; no premise explicitly states Amanda is the opponent
+= ~ premises insufficient to determine Amanda's activity ~7
+$ never states Amanda's action
+$ never states chess is 2-player here
+popular answer (chess with Alice) requires %A1 ∧ %A2 — plausible but ¬entailed
+
+fork:
+= playing chess with Alice ~6 (requires both %A)
+| = undetermined ~7 (strictly from $)
+
+> solution?
+
+The puzzle is a classic lateral-thinking riddle designed to have one "intended" answer, but TL reveals the epistemic gap:
+
+= playing chess with Alice ~6 — intended/popular answer
+| = undetermined ~7 — strictly from premises
+
+The riddle wants you to infer: chess needs 2 players → Amanda is the opponent. Most people accept this. But $ never explicitly states it, and "playing chess" alone doesn't entail a human opponent present in the room.
+
+Pick your epistemology: if you're at a party, say "chess with Alice." If you're in a logic class, say "insufficient premises."
 ```
 
 ## Claude Code integration
