@@ -42,7 +42,7 @@ Every claim ends with `~N` (confidence — low = guess, high = certain, any cons
 
 simple, pseudocode-like:
 ```
-analyze(codebase component) propose(solutions)
+analyze(codebase component) propose(improvements)
 ```
 
 more structured, following TL format:
