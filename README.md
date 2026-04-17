@@ -70,6 +70,44 @@ solve(There are three sisters in a room. Anna is reading a book. Alice is playin
 Amanda is playing chess. Chess requires two players — Alice is playing chess, so Amanda must be her opponent.
 ```
 
+### Opus 4.6, high effort, no thinking, TL
+```
+solve(There are three sisters in a room. Anna is reading a book. Alice is playing a game of chess. What is the third sister, Amanda, doing?)
+? third sister Amanda's activity
+
+$ Anna reading book, Alice playing chess, |$| = 2
+
+chess requires 2 players → Alice's opponent = ?
+%A1: Amanda is Alice's chess opponent
+candidate: Amanda playing chess ~7
+
+! attack candidate
+¬%A1: Alice could play chess with ¬Amanda
+- chess opponent could be non-sister (friend, parent, stranger, online)
+- chess opponent could be computer/app
+- Alice could play alone (studying positions, solving puzzles)
+alternatives compatible with $:
+- Amanda playing chess ~7
+- Amanda doing anything else (watching TV, cooking, sleeping, ...) ~3 each
+|%A| = 1, |$| = 2 → underdetermined but not premise-insufficient
+
+! epistemic gate
+|%A| < |$| ✓
+but: multiple alternatives survive with comparable ~N
+the "chess needs 2 → must be Amanda" chain rests entirely on %A1
+¬$ states room has only 3 people
+¬$ states no other players available
+cultural expectation ("this is a riddle, chess=2 is the trick") ¬elevates %A to $
+
+~ underdetermined — $ insufficient to uniquely determine Amanda's activity
+
+= fork:
+
+Amanda playing chess (with Alice) ~7 — strongest single candidate << chess typically needs 2 & she's available
+Amanda doing something unspecified ~5 — open set of alternatives collectively plausible
+~ missing: who Alice's chess opponent is, any constraint on Amanda's activity
+```
+
 ### Opus 4.6, high effort, thinking, TL
 
 ```

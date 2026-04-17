@@ -74,12 +74,16 @@ $ enumerate ONLY what is explicitly stated
   if |%A| > 0 ∧ alternatives exist: answer is underdetermined
   revise ~N: max confidence = min(~N of weakest %A)
 
-### Phase 3: Epistemic gate
+### Phase 3: Epistemic gate (hard block)
   if |%A| ≥ |$|: → ~ (premises insufficient)
+  if >! found underdetermined: → ~ (¬collapse to single =)
   if multiple alternatives survive >! with comparable ~N: MUST fork
+  ¬override: task framing | "most likely" | "clearly implies" ¬valid basis to bypass gate
+  ¬promote: cultural expectation | genre convention | implied intent ¬elevates %A to $
 
 ### Phase 4: Conclusion
 = (survives >! AND gate) | ~ gaps
+  if gate → ~: output ~ with enumerated alternatives. ¬pick winner.
 
 ## Branching
   ∀ alternatives with comparable ~N: MUST fork
