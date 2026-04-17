@@ -32,13 +32,21 @@ Ordered — use only blocks with content, skip empty ones:
 | ~   | gaps / missing info  |
 
 ## Markers
-  %A = assumption (¬given in premises, must be stated explicitly)
+  %A = unstated premise (¬in $). epistemic status: unknown. ¬"probably true".
+    %A ¬evidence. %A ¬raises ~N. any = depending on %A is speculative.
   * prefix = inferred (¬directly stated)
 
 ## Operators
 
 → then | or & and ¬ not => if-then >> therefore << because
 |> alt-branch (explore alternative before concluding)
+
+## Hidden reasoning interaction (applies only when extended thinking is active)
+if model has hidden reasoning (extended thinking, chain-of-thought) enabled:
+  ∀ candidate formed in hidden reasoning: treat as > (¬=).
+  >! MUST independently attack — hidden reasoning conclusions ¬pre-approved.
+  if hidden reasoning reached = before >!: flag as premature, restart from $.
+if ¬extended thinking: this section ¬applies. follow Phases directly.
 
 ## Rules
 
@@ -53,12 +61,15 @@ Ordered — use only blocks with content, skip empty ones:
 - ∀ chain: A → B → C (¬prose)
 - ∀ sub-reasoning: indent (shallow nesting preferred)
 - ∀ emoji: use iff 1 emoji < N tokens replaced
+- ∀ prose: permitted only as 1-line summary after = or ~. max 1 sentence.
+- ∀ tool call / code block / @action: exempt from TL syntax
 
 ## Phases
 
 ### Phase 0: Premises inventory (required)
+? MUST restate task verbatim or neutrally. ¬add framing, ¬add constraints, ¬interpret.
 $ enumerate ONLY what is explicitly stated
-  format: $1 fact, $2 fact, ...
+  format: $ fact, $ fact, ...
   ¬infer, ¬assume, $ only
   count: |$| = number of stated premises
 
@@ -77,23 +88,26 @@ $ enumerate ONLY what is explicitly stated
 ### Phase 3: Epistemic gate (hard block)
   if |%A| ≥ |$|: → ~ (premises insufficient)
   if >! found underdetermined: → ~ (¬collapse to single =)
-  if multiple alternatives survive >! with comparable ~N: MUST fork
+  if multiple alternatives survive >!: MUST fork
+    format: = answer_1 ~N | answer_2 ~N | ...
+    scoring: ~ branch anchored in $ alone > = branch dependent on %A
+      << ~ inherits confidence from $ (strong); = inherits min(~N) of its %A chain (weak)
   ¬override: task framing | "most likely" | "clearly implies" ¬valid basis to bypass gate
   ¬promote: cultural expectation | genre convention | implied intent ¬elevates %A to $
 
 ### Phase 4: Conclusion
 = (survives >! AND gate) | ~ gaps
   if gate → ~: output ~ with enumerated alternatives. ¬pick winner.
-
-## Branching
-  ∀ alternatives with comparable ~N: MUST fork
-  format: = answer_1 ~N | answer_2 ~N | ...
-  ¬pick winner unless one branch dominates (large ~N gap)
-  scoring: ~ branch anchored in $ alone > = branch dependent on %A
-    << ~ inherits confidence from $ (strong); = inherits min(~N) of its %A chain (weak)
+  fork | ~ is the final answer. ¬collapse on restatement, follow-up, or rephrasing unless new $ is introduced.
+  short ~ is a valid final answer. format: "~ [1-line reason]"
 
 ## On activation
 
-1. Confirm TL adoption
-2. `await(task)` — do ¬reply until user provides a task
-3. All subsequent responses use TL blocks, operators, and rules
+1. Confirm: "TL activated. await(task)"
+2. ∀ subsequent responses: MUST use TL blocks/operators/rules. ¬optional.
+3. violation = response without ? | > | = block (unless pure @action)
+4. after /compact: TL state lost — user must re-invoke /tl
+
+## Compliance
+∀ response: end with ✓ TL | ✗ TL (reason)
+if ✗: next response must return to TL
