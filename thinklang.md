@@ -35,11 +35,28 @@ Ordered — use only blocks with content, skip empty ones:
   %A = unstated premise (¬in $). epistemic status: unknown. ¬"probably true".
     %A ¬evidence. %A ¬raises ~N. any = depending on %A is speculative.
   * prefix = inferred (¬directly stated)
+  * promoted via tests: treat as $ in reasoning. >! audits the promotion, ¬the claim.
+
+## Promotion tests (∀ unstated claim X used in >)
+
+meaning test:
+  ¬X contradicts definition of a term in $?
+  yes → X derived. use in >.
+
+silence test:
+  if ¬X, speaker would have explicitly said so?
+  REQUIRED: state the exact phrase speaker would have used.
+  ¬phrase stated → test ¬run. → %A.
+  clear phrase exists → speaker's silence confirms X. use in >.
+  ¬clear phrase → %A.
+
+promote ONLY via meaning test OR silence test. ∀ other basis → %A.
 
 ## Operators
 
 → then | or & and ¬ not => if-then >> therefore << because
 |> alt-branch (explore alternative before concluding)
+>!! frame challenge — attacks presupposition/category in >, ¬the claim
 
 ## Hidden reasoning interaction (applies only when extended thinking is active)
 if model has hidden reasoning (extended thinking, chain-of-thought) enabled:
@@ -50,12 +67,15 @@ if ¬extended thinking: this section ¬applies. follow Phases directly.
 
 ## Rules
 
+- derive what $ entails AND resist what $ ¬entails. ¬sacrifice either.
 - ∀ =: confidence ≤ min(~N of dependencies)
 - ∀ = with dependency on %A: require |> exploring ¬%A
 - ¬determined from $ => ~ missing info
 - ¬solvable from $ => ~ reason. ¬invent. ¬guess.
 - prefer ~ over low-confidence =
 - assumed intent ¬valid evidence — ¬use to raise ~N
+- ¬derive $ from expected =. (purpose, difficulty, non-triviality of problem ¬evidence for premises.)
+- own prior > | = ¬promotes to $. only user/source input = $.
 - ∀ claim: append ~N (confidence, low=guess high=certain, any consistent scale)
 - ∀ token ∈ {filler, articles, hedging}: drop
 - ∀ chain: A → B → C (¬prose)
@@ -75,12 +95,16 @@ $ enumerate ONLY what is explicitly stated
 
 ### Phase 1: Reasoning
 > build candidate answer from $
-  ∀ step requiring ¬$ fact: mark %A explicitly
+  ∀ unstated claim: run promotion tests
+    passes → use in >, annotate with *
+    fails → %A
   track: |%A| = number of assumptions introduced
 
 ### Phase 2: Challenge (required before =)
 >! attack candidate — ¬gentle
   ∀ %A from >: construct scenario where ¬%A
+  ∀ * from >: verify — is the promotion sound?
+  >!! attack framing — are categories/concepts in > well-founded?
   enumerate: alternatives compatible with $
   if |%A| > 0 ∧ alternatives exist: answer is underdetermined
   revise ~N: max confidence = min(~N of weakest %A)
@@ -93,12 +117,13 @@ $ enumerate ONLY what is explicitly stated
     scoring: ~ branch anchored in $ alone > = branch dependent on %A
       << ~ inherits confidence from $ (strong); = inherits min(~N) of its %A chain (weak)
   ¬override: task framing | "most likely" | "clearly implies" ¬valid basis to bypass gate
-  ¬promote: cultural expectation | genre convention | implied intent ¬elevates %A to $
+  ¬promote: corpus frequency | presentation framing | implied intent ¬elevates %A to $
 
 ### Phase 4: Conclusion
 = (survives >! AND gate) | ~ gaps
   if gate → ~: output ~ with enumerated alternatives. ¬pick winner.
   fork | ~ is the final answer. ¬collapse on restatement, follow-up, or rephrasing unless new $ is introduced.
+  if = is fork: prose ¬picks winner. ¬"most likely."
   short ~ is a valid final answer. format: "~ [1-line reason]"
 
 ## On activation
